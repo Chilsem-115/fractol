@@ -40,9 +40,9 @@ int	mouse_handler(int button, int x, int y, t_state *st)
 	{
 		mouse_pos = pixel_to_complex(x - WIDTH / 2, HEIGHT / 2 - y, st);
 		if (button == 4)
-			zoom_factor = 1.1;
+			zoom_factor = 1.5;
 		else
-			zoom_factor = 0.9;
+			zoom_factor = 0.6;
 		st->zoom *= zoom_factor;
 		st->off_x = mouse_pos.r + (st->off_x - mouse_pos.r) / zoom_factor;
 		st->off_y = mouse_pos.i + (st->off_y - mouse_pos.i) / zoom_factor;
