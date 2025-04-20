@@ -28,8 +28,8 @@ typedef enum e_fractal_type
 
 typedef struct	s_complex
 {
-	float	r;
-	float	i;
+	double	r;
+	double	i;
 }			t_complex;
 
 /*
@@ -65,9 +65,9 @@ typedef struct	s_state
 {
 	t_win			win;
 	long			max_iteration;
-	float			off_x;
-	float			off_y;
-	float			zoom;
+	double			off_x;
+	double			off_y;
+	double			zoom;
 	t_complex		c;
 	t_fractal_type	fractal_type;
 }					t_state;
@@ -76,10 +76,10 @@ typedef struct	s_state
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 int		ft_strncmp(char *s1, char *s2, int n);
-float	ft_atof(const char *str);
+double	ft_atodb(const char *str);
 
 /* compute functions */
-t_complex	new_complex(float real, float imag);
+t_complex	new_complex(double real, double imag);
 int		compute_iteration(t_complex z0, t_complex constant, int max_iteration);
 
 /* fractal rendering */

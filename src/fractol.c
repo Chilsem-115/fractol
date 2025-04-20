@@ -10,8 +10,8 @@ static void	setup_state(t_state *state, int argc, char **argv)
 	else if (!ft_strncmp(argv[1], "julia", 6) && argc == 4)
 	{
 		state->fractal_type = FRACTAL_JULIA;
-		state->c.r = atof(argv[2]);
-		state->c.i = atof(argv[3]);
+		state->c.r = ft_atodb(argv[2]);
+		state->c.i = ft_atodb(argv[3]);
 	}
 	else
 	{

@@ -46,10 +46,34 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return (*s1 - *s2);
 }
 
-float	ft_atof(const char *str)
+double	ft_atodb(const char *str)
 {
-	float	res;
-	float	res2;
+	double	int_part;
+	double	dec_part;
+	double	sign;
+	int		i;
+
+	int_part = 0.0;
+	dec_part = 0.0;
+	sign = 1.0;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			sign = -1.0;
+	while (*str >= '0' && *str <= '9')
+		int_part = int_part * 10 + (*str++ - '0');
+	i = -1;
+	if (*str == '.' && *str++)
+	{
+		while (*str >= '0' && *str <= '9')
+			dec_part += (pow(10, i--) * (*str++ - '0'));
+	}
+	return (sign * (int_part + dec_part));
+}
+/*
+double	ft_atodb(const char *str)
+{
+	double	res;
+	double	res2;
 	const char	*tmp;
 	int		len;
 	
@@ -68,3 +92,4 @@ float	ft_atof(const char *str)
 	else
 		return (res + -res2);
 }
+*/

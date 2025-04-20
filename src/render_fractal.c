@@ -24,13 +24,13 @@ static void	put_pixel(t_img *img, int x, int y, int color)
  */
 t_complex	pixel_to_complex(int x, int y, t_state *st)
 {
-    float	norm_x;
-    float	norm_y;
-    float	real;
-	float	imag;
+    double	norm_x;
+    double	norm_y;
+    double	real;
+	double	imag;
 
-	norm_x = (WIDTH/2 + x) / (float)WIDTH;
-	norm_y = (HEIGHT/2 - y) / (float)HEIGHT;
+	norm_x = (WIDTH/2 + x) / (double)WIDTH;
+	norm_y = (HEIGHT/2 - y) / (double)HEIGHT;
     if (st->fractal_type == FRACTAL_MANDELBROT)
     {
         real = -2.5f + norm_x * (1.0f + 2.5f);

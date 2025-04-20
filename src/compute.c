@@ -2,11 +2,12 @@
 
 /*
  * this function is for computing the next element for the number
+ * z_{n + 1} = z_n^2 + c
  */
 static t_complex	compute_next(t_complex current, t_complex constant)
 {
-	float		zr;
-	float		zi;
+	double	zr;
+	double	zi;
 
 	zr = current.r * current.r - current.i * current.i;
 	zi = 2.0 * current.r * current.i;
@@ -15,8 +16,9 @@ static t_complex	compute_next(t_complex current, t_complex constant)
 
 /*
  * returns the mod squared
+ * |z|^2 = z.r^2 + z.i^2
  */
-static float	mod2(t_complex z)
+static double	mod2(t_complex z)
 {
 	return (z.r * z.r + z.i * z.i);
 }
@@ -24,7 +26,7 @@ static float	mod2(t_complex z)
 /*
  * set and return the complex value
  */
-t_complex	new_complex(float real, float imag)
+t_complex	new_complex(double real, double imag)
 {
 	t_complex	c;
 	c.r = real;

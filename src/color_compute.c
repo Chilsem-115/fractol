@@ -2,14 +2,14 @@
 
 int	get_color(int n, int max_iter)
 {
-	float	t;
+	double	t;
 	int		r;
 	int		g;
 	int		b;
 
 	if (n == max_iter)
 		return	(0x000000);
-	t = (float)n / max_iter;
+	t = (double)n / max_iter;
 	r = (int)(9 * (1 - t) * t * t * t * 255);
 	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
