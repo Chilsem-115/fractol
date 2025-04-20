@@ -10,19 +10,22 @@
 # include "ft_printf.h"
 
 #define ERROR_MESSAGE "How to use:\n\t~ ./fractol mandelbrot\n\t~ ./fractol julia <real_value> <imaginary_value>\n"
+#define JULIA_EXAMPLES "Examples:\n\t~ ./fractol julia -0.4 0.6\n\t~ ./fractol julia 0.285 0.01\n\t~ ./fractol julia -0.8 0.156\n"
 
-#define WIDTH	1800
-#define HEIGHT	1200
+/* fractal types */
+#define FRACTAL_MANDELBROT 0
+#define FRACTAL_JULIA 1
+
+/* Event macros */
+#define ON_KEYDOWN 2
+#define ON_DESTROY 17
+#define KEY_PRESS_MASK (1L << 0)
+
+#define WIDTH		1200
+#define HEIGHT		1200
+#define	MAX_ITER	100
 
 #define ESC_KEY 65307
-
-/* for storing the fractal type */
-
-typedef enum e_fractal_type
-{
-	FRACTAL_MANDELBROT,
-	FRACTAL_JULIA
-}	t_fractal_type;
 
 /* used as a variable type for storing complex numbers */
 
@@ -64,18 +67,19 @@ typedef struct	s_win
 typedef struct	s_state
 {
 	t_win			win;
+	int				fractal_type;
 	long			max_iteration;
 	double			off_x;
 	double			off_y;
 	double			zoom;
 	t_complex		c;
-	t_fractal_type	fractal_type;
 }					t_state;
 
 /* utilities */
+int	ft_isdigit(int c);
+int	is_valid_double(const char *s);
 size_t	ft_strlen(const char *str);
-int		ft_atoi(const char *str);
-int		ft_strncmp(char *s1, char *s2, int n);
+int	ft_strncmp(char *s1, char *s2, int n);
 double	ft_atodb(const char *str);
 
 /* compute functions */

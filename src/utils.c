@@ -1,5 +1,36 @@
 #include "fractol.h"
 
+int	ft_isdigit(int c)
+{
+    return (c >= '0' && c <= '9');
+}
+
+int	is_valid_double(const char *s)
+{
+	int	i;
+	int	has_digit;
+
+	i = 0;
+	has_digit = 0;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	while (s[i] && ft_isdigit(s[i]))
+	{
+		has_digit = 1;
+		i++;
+	}
+	if (s[i] == '.' && ft_isdigit(s[i + 1]))
+	{
+		i += 2;
+		has_digit = 1;
+		while (s[i] && ft_isdigit(s[i]))
+			i++;
+	}
+	if (!has_digit || s[i] != '\0')
+		return (0);
+	return (1);
+}
+
 size_t	ft_strlen(const char *str)
 {
 	int	x;
@@ -37,37 +68,13 @@ double	ft_atodb(const char *str)
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
 			sign = -1.0;
-	while (*str >= '0' && *str <= '9')
+	while (ft_isdigit(*str))
 		int_part = int_part * 10 + (*str++ - '0');
 	i = -1;
 	if (*str == '.' && *str++)
 	{
-		while (*str >= '0' && *str <= '9')
+		while (ft_isdigit(*str))
 			dec_part += (pow(10, i--) * (*str++ - '0'));
 	}
 	return (sign * (int_part + dec_part));
 }
-/*
-double	ft_atodb(const char *str)
-{
-	double	res;
-	double	res2;
-	const char	*tmp;
-	int		len;
-	
-	tmp = str;
-	res = ft_atoi(tmp);
-	while(*tmp && *tmp != '-')
-		tmp++;
-	if (*tmp == '.')
-		tmp++;
-	res2 = ft_atoi(tmp);
-	len = ft_strlen(tmp);
-	while (len--)
-		res2 /= 10;
-	if (res >= 0)
-		return (res + res2);
-	else
-		return (res + -res2);
-}
-*/

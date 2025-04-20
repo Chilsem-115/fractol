@@ -22,7 +22,7 @@ static void	put_pixel(t_img *img, int x, int y, int color)
  * Map a pixel at (x,y) — where (0,0) is the center —
  * into the complex plane, applying zoom and offset.
  */
-t_complex	pixel_to_complex(int x, int y, t_state *st)
+t_complex	pixel_to_complex(int x, int y, t_state *state)
 {
     double	norm_x;
     double	norm_y;
@@ -31,18 +31,18 @@ t_complex	pixel_to_complex(int x, int y, t_state *st)
 
 	norm_x = (WIDTH/2 + x) / (double)WIDTH;
 	norm_y = (HEIGHT/2 - y) / (double)HEIGHT;
-    if (st->fractal_type == FRACTAL_MANDELBROT)
+    if (state->fractal_type == FRACTAL_MANDELBROT)
     {
         real = -2.5f + norm_x * (1.0f + 2.5f);
         imag =  1.0f - norm_y * (2.0f);
     }
-    else if(st->fractal_type == FRACTAL_JULIA)
+    else if(state->fractal_type == FRACTAL_JULIA)
     {
         real = -2.0f + norm_x * 4.0f;
         imag =  2.0f - norm_y * 4.0f;
     }
-    real = (real - st->off_x) / st->zoom + st->off_x;
-    imag = (imag - st->off_y) / st->zoom + st->off_y;
+    real = real / state->zoom;
+    imag = imag / state->zoom;
     return (new_complex(real, imag));
 }
 
