@@ -14,12 +14,6 @@
 #define WIDTH	1200
 #define HEIGHT	1200
 
-#define BLACK	0x000000
-#define WHITE	0xFFFFFF
-#define RED		0xFF0000
-#define GREEN	0x00FF00
-#define BLUE	0x0000FF
-
 #define ESC_KEY 65307
 
 /* for storing the fractal type */

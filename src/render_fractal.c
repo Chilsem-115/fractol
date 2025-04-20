@@ -22,7 +22,7 @@ static void	put_pixel(t_img *img, int x, int y, int color)
  * Map a pixel at (x,y) — where (0,0) is the center —
  * into the complex plane, applying zoom and offset.
  */
-t_complex pixel_to_complex(int x, int y, t_state *st)
+t_complex	pixel_to_complex(int x, int y, t_state *st)
 {
     float	norm_x;
     float	norm_y;
@@ -89,7 +89,6 @@ static void	render_julia(t_state *state)
 		y++;
 	}
 }
-
 
 /*
  * the function responsible for calculating each pixel on the screen.

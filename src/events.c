@@ -23,31 +23,19 @@ int	keypress_handler(int keysym, t_state *state)
 {
 	if (keysym == XK_Escape)
 		panic_exit(1, NULL, state);
-	else if (keysym == XK_plus)
-		state->max_iteration += 10;
-	else if (keysym == XK_minus)
-		state->max_iteration -= 10;
 	render_fractal(state);
 	return (0);
 }
 
-int	mouse_handler(int button, int x, int y, t_state *st)
+int	mouse_handler(int button, int x, int y, t_state *state)
 {
-	t_complex	mouse_pos;
-	double		zoom_factor;
-
-	if (button == 4 || button == 5)
-	{
-		mouse_pos = pixel_to_complex(x - WIDTH / 2, HEIGHT / 2 - y, st);
-		if (button == 4)
-			zoom_factor = 1.5;
-		else
-			zoom_factor = 0.6;
-		st->zoom *= zoom_factor;
-		st->off_x = mouse_pos.r + (st->off_x - mouse_pos.r) / zoom_factor;
-		st->off_y = mouse_pos.i + (st->off_y - mouse_pos.i) / zoom_factor;
-		render_fractal(st);
-	}
+	(void)x;
+	(void)y;
+	if (button == 4)
+		state->zoom *= 1.5;
+	else if (button == 5)
+		state->zoom *= 0.6;
+	render_fractal(state);
 	return (0);
 }
 

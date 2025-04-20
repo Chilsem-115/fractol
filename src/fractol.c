@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		init_window(&state);
 		mlx_hook(state.win.mlx_window, 2, 1L << 0, keypress_handler, &state);
         mlx_hook(state.win.mlx_window, 17, 0, close_handler, &state);
+		mlx_hook(state.win.mlx_window, 2, 1L << 0, keypress_handler, &state);
 		mlx_mouse_hook(state.win.mlx_window, mouse_handler, &state);
 		render_fractal(&state);
 		mlx_loop(state.win.mlx_connection);
