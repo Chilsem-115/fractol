@@ -11,7 +11,7 @@
 
 #define ERROR_MESSAGE "How to use:\n\t~ ./fractol mandelbrot\n\t~ ./fractol julia <real_value> <imaginary_value>\n"
 
-#define WIDTH	1200
+#define WIDTH	1800
 #define HEIGHT	1200
 
 #define ESC_KEY 65307

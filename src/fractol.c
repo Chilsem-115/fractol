@@ -18,7 +18,7 @@ static void	setup_state(t_state *state, int argc, char **argv)
 		ft_dprintf(2, ERROR_MESSAGE);
 		exit(EXIT_FAILURE);
 	}
-	state->max_iteration = 100;
+	state->max_iteration = 50;
 	state->zoom = 1.0f;
 	state->off_x = 0.0f;
 	state->off_y = 0.0f;
